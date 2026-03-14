@@ -221,6 +221,15 @@ $services = [
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>
     (function () {
+      var path = window.location.pathname || "";
+      if (/\/index\.php$/i.test(path) && window.history && window.history.replaceState) {
+        var cleanPath = path.replace(/index\.php$/i, "");
+        if (cleanPath === "") {
+          cleanPath = "/";
+        }
+        window.history.replaceState(null, "", cleanPath + (window.location.search || "") + (window.location.hash || ""));
+      }
+
       if (window.lucide) {
         window.lucide.createIcons();
       }
