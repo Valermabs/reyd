@@ -1,7 +1,4 @@
 <?php
-session_start();
-$status = $_SESSION['contact_status'] ?? null;
-unset($_SESSION['contact_status']);
 
 $products = [
   [
@@ -210,35 +207,6 @@ $services = [
           </div>
         </div>
 
-        <div class="card form-card reveal-on-scroll" style="--reveal-delay: 140ms;">
-          <?php if ($status): ?>
-            <p class="notice <?= $status['ok'] ? 'ok' : 'err' ?>"><?= htmlspecialchars($status['message']) ?></p>
-          <?php endif; ?>
-
-          <form action="contact.php" method="post" class="form">
-            <label>
-              Full Name
-              <input type="text" name="name" required minlength="2" />
-            </label>
-
-            <label>
-              Email Address
-              <input type="email" name="email" required />
-            </label>
-
-            <label>
-              Phone Number
-              <input type="text" name="phone" required minlength="8" />
-            </label>
-
-            <label>
-              Message
-              <textarea name="message" rows="5" required minlength="10"></textarea>
-            </label>
-
-            <button type="submit" class="btn">Send Message</button>
-          </form>
-        </div>
       </div>
     </section>
   </main>
